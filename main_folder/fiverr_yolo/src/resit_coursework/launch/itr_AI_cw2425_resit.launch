@@ -1,0 +1,20 @@
+<launch>
+    <arg name="video_folder"/>
+    <arg name="use_rviz" default="true"/>
+    <arg name="seed" default="random" />
+
+    <include file="$(find rosplan_stage_demo)/launch/empty_stage_single_robot.launch">
+        <arg name="use_default_rviz" value="$(arg use_rviz)"/>
+    </include>
+
+    <include file="$(find darknet_ros)/launch/darknet_ros.launch">
+        <arg name="image" value="/camera/image"/>
+    </include>
+    
+    <node pkg="resit_coursework" type="itr_cw_2425_resit" name="itr_cw_2425_resit" output="screen" args="--video_folder $(arg video_folder) --seed $(arg seed)" required="true"/>
+    
+    <node pkg="resit_coursework" type="main_node.py" name="main_node" required="true" output="screen" />
+
+    <include file="$(find speech_database)/launch/speech.launch" />
+    <include file="$(find ros_vosk)/launch/ros_vosk.launch" />
+</launch>
