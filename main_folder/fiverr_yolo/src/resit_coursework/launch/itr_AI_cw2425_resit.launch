@@ -9,6 +9,7 @@
 
     <include file="$(find darknet_ros)/launch/darknet_ros.launch">
         <arg name="image" value="/camera/image"/>
+        <arg name="network_param_file" value="$(find darknet_ros)/config/yolov3.yaml"/>
     </include>
     
     <node pkg="resit_coursework" type="itr_cw_2425_resit" name="itr_cw_2425_resit" output="screen" args="--video_folder $(arg video_folder) --seed $(arg seed)" required="true"/>
@@ -17,4 +18,4 @@
 
     <include file="$(find speech_database)/launch/speech.launch" />
     <include file="$(find ros_vosk)/launch/ros_vosk.launch" />
-</launch>
+</launch> 

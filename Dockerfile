@@ -11,11 +11,17 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     ros-noetic-smach \
     ros-noetic-smach-ros \
     ros-noetic-sound-play \
+    ros-noetic-turtlebot3* \
+    ros-noetic-dwa-local-planner \
     espeak \
+    libportaudio2 \
+    libportaudiocpp0 \
+    portaudio19-dev \
+    python3-tk \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python packages
-RUN pip3 install beautifulsoup4
+RUN pip3 install beautifulsoup4 vosk pyttsx3 sounddevice
 
 # Create non-root user
 ARG USERNAME=wasif
